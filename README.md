@@ -67,7 +67,7 @@ At random times, news items arrived that could affect any subset of the 5 stocks
 - When, for example, news indicated a **positive signal for NVIDIA**:
   - Opened **long positions** in both the **primary listing and the dual listing**
   - Adjusted exposure based on confidence score and current inventory
-- Integrated this with the execution layer so that **news-driven orders respected rate limits** and did not starve market-making updates.
+- Integrated this with the execution layer so that **news-driven orders respected rate limits**.
 
 ---
 
