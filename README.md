@@ -68,7 +68,7 @@ At random times, news items arrived that could affect any subset of the 5 stocks
   - Opened **long positions** in both the **primary listing and the dual listing**
   - Adjusted exposure based on confidence score and current inventory
 - Integrated this with the execution layer so that **news-driven orders respected rate limits**.
-
+- Risk Management: If we predicted wrong, we would detect it after a short delay and close out the position.
 ---
 
 ## Statistical arbitrage between dual listings
@@ -109,11 +109,10 @@ The market-maker was split into three modules:
 3. **Position sizing module**  
    - Determined **volume per side** based on:
      - Current inventory
-     - Recent PnL volatility
      - Strength of signals (e.g. imbalance, news, stat-arb opportunities)
 
 A key edge was **explicitly reasoning about queue priority and rate limits**.  
-As far as I know, most teams did not systematically optimize cancel/amend/insert decisions, which gave us **better execution priority** at similar quoted spreads.
+As far as I know, most teams did not systematically optimize cancel/amend/insert decisions, which gave us **better execution priority**.
 
 ---
 
@@ -125,13 +124,15 @@ All three strategy families ran **in parallel**:
 - **Stat-arb** continuously monitored cross-venue mispricings
 - **Market making** provided background liquidity and captured spread
 
-I designed the **combination logic**, which:
+I designed the **combination logic**.
 
-- Resolved conflicts between strategies (e.g. news vs. stat-arb) based on:
+For the future, we could take this into account:
+
+- Resolve conflicts between strategies (e.g. news vs. stat-arb) based on:
   - Signal strength
   - Inventory
   - Risk budget
-- Centralized **rate-limit management** so high-value actions (e.g. news or stat-arb fills)  
+- Centralize **rate-limit management** so high-value actions (e.g. news or stat-arb fills)  
   could temporarily pre-empt less critical market-making updates.
 
 ---
