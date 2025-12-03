@@ -1,10 +1,10 @@
-params = {}   #dictionary with our tuned parameters
+params = {}   #dictionary with my tuned parameters
 
 def microprice_calculation():
     return 0
 
 
-#some other signals we used for pricing calculation: order book imbalance, volatility, inventory risk, etc.
+#some other signals I used for pricing calculation: order book imbalance, volatility, inventory risk, etc.
 
 def pricing_calculation():
     return 0,0
@@ -56,5 +56,6 @@ def market_making(best_bid, best_bid_volume, best_ask, best_ask_volume, history_
     elif current_position <= -position_threshold:
         # Too short — stop quoting asks
         ask_volume = 0
+
 
     return bid_price, bid_volume, ask_price, ask_volume, bid_action1, ask_action1, bid_action2, ask_action2
