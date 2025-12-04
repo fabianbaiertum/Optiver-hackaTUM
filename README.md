@@ -60,7 +60,7 @@ For each stock, we continuously monitored the **spread between primary and dual 
 
 ## Market making with microstructure signals
 
-For each stock we ran a **microstructure-driven market making strategy**, based on my previous work from IMC Prosperity and Optiver hackathon (including a **1st place** result).
+For each stock we ran a **microstructure-driven market making strategy**, based on my previous work from IMC Prosperity and Optiver hackathon (including a **1st place** result). I extended the logic with added safety nets, an execution layer and taking into account outstanding orders for the pricing (excluding our outstanding orders from the LOB).
 
 The market-maker was split into three modules:
 
